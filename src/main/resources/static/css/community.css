@@ -1,0 +1,23 @@
+.main{
+    margin:30px 10%;
+    background-color: white;
+}
+body{
+    background-color: #efefef;
+}
+.btn-publish{
+    float:right;
+    margin-bottom: 15px;
+}
+.zhinan{
+    margin-top: 30px;
+}
+.media-object {
+    width: 38px;
+    height: 38px;
+}
+.text-desc{
+    font-size: 12px;
+    font-weight: normal;
+    color:#999;
+}

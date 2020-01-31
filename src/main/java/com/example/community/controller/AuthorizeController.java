@@ -5,6 +5,7 @@ import com.example.community.Model.User;
 import com.example.community.dto.AccessTokenDTO;
 import com.example.community.dto.GithubUser;
 import com.example.community.provider.GithubProvider;
+import com.example.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -34,7 +35,7 @@ public class AuthorizeController {
     private String redirectUri;
 
     @Resource
-    private UserMapper userMapper;
+    private UserService userService;
 
 
 
@@ -52,7 +53,7 @@ public class AuthorizeController {
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        if(githubUser != null){
+        if(githubUser != null && githubUser.getId() != null){
             User user = new User();
             String token = UUID.randomUUID().toString();
             user.setToken(token);
@@ -60,8 +61,11 @@ public class AuthorizeController {
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
-            userMapper.insert(user);
-            response.addCookie(new Cookie("token",token));
+            user.setAvatarUrl(githubUser.getAvatar_url());
+            userService.insert(user);
+            Cookie cookie = new Cookie("token",token);
+            cookie.setMaxAge(360000);
+            response.addCookie(cookie);
             return "redirect:/";
         }else{
             //登录失败

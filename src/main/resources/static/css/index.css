@@ -1,0 +1,19 @@
+.main{
+    margin:30px 10%;
+    background-color: white;
+}
+.zhinan{
+    margin-top: 30px;
+}
+.media-object {
+    width: 45px;
+    height: 45px;
+}
+.text-desc{
+    font-size: 12px;
+    font-weight: normal;
+    color:#999;
+}
+.heading{
+    margin-top: 3px;
+}
