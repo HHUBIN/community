@@ -2,16 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>开心社区</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-
-    <!--    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <title th:text="${sectionName}"></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+<!--    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 </head>
 <body>
 <div th:insert="navigation :: nav"></div>
@@ -20,7 +18,7 @@
     <div class="row">
 
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发现</h2>
+            <h2><span class="glyphicon glyphicon-plus" aria-hidden="true" th:text="${sectionName}"></span></h2>
             <hr>
 
             <div class="media" th:each="question : ${page.questionDTOList}">
@@ -31,7 +29,7 @@
                 </div>
 
                 <div class="media-body">
-                    <a th:href="@{'question/'+${question.id}}"><h4 class="media-heading heading" th:text="${question.title}"></h4></a>
+                    <a th:href="@{'../question/'+${question.id}}"><h4 class="media-heading heading" th:text="${question.title}" ></h4></a>
                     <span class="text-desc">
                         <span th:text="${question.id}"></span>
                         <span th:text="${question.commentCount}"></span>个回复   •
@@ -55,9 +53,12 @@
                 <li class="page-item" th:if="${page.lastPage}"><a class="page-link" th:href="@{/(page=${page.totlePage})}">最后一页</a></li>
                 <li class="page-item disabled" th:if="${page.lastPage == false}"><a class="page-link" href="#">最后一页</a></li>
             </ul>
+
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 zhinan">
-            <h1>热门话题</h1>
+            <a href="/profile/questions" th:class="${section == 'questions'}? 'list-group-item active' : 'list-group-item'"><h4>我的提问<span class="badge pull-right">42</span></h4></a>
+            <a href="/profile/replies" th:class="${section == 'replies'}? 'list-group-item active' : 'list-group-item'"><h4>最新回复<span class="badge pull-right">42</span></h4></a>
+
         </div>
     </div>
 </div>
