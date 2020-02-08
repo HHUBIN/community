@@ -21,3 +21,45 @@ body{
     font-weight: normal;
     color:#999;
 }
+.comment {
+    margin-top: 10px;
+}
+.btn-comment {
+    float: right;
+    margin: 10px 0px;
+}
+.name{
+    margin-top: 0px;
+}
+.comment-media{
+    margin-top: 0px;
+}
+.comment-hr{
+    margin: 10px;
+}
+.comment-time{
+    float: right;
+}
+.comment-a{
+    padding-left: 5px;
+    padding-right: 16px;
+}
+.comment-2{
+    border-radius: 5px;
+    padding: 30px;
+    border: 2px solid #eee;
+}
+
+.comment-color{
+    color: #999;
+}
+.glyphicon:hover{
+    color: #499ef3;
+}
+.comment-icon{
+    color: #499ef3;
+}
+.glyphicon{
+    font-size: 17px;
+    cursor: pointer;
+}

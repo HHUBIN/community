@@ -1,8 +1,8 @@
 package com.example.community.controller;
 
-import com.example.community.Model.User;
 import com.example.community.dto.AccessTokenDTO;
 import com.example.community.dto.GithubUser;
+import com.example.community.model.User;
 import com.example.community.provider.GithubProvider;
 import com.example.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

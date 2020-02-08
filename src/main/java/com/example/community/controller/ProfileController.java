@@ -1,7 +1,7 @@
 package com.example.community.controller;
 
-import com.example.community.Model.User;
 import com.example.community.dto.PageDTO;
+import com.example.community.model.User;
 import com.example.community.service.QuestionService;
 import org.springframework.stereotype.Controller;
 
